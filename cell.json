@@ -1,0 +1,51 @@
+{
+    "$id": "https://use.fieldcell.org/schema/v0.1/cell.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "A fieldcell.org matrix cell schema, a basic building element for flat data representations of decision models with any number of dimensions, nesting depth, and complexity. It enables globally reusable fragments of decision data.",
+    "type": "object",
+    "properties": {
+        "i": {
+            "type": "string",
+            "description": "The cell's identifier (URL)",
+            "format": "uri"
+        },
+        "o": {
+            "type": "string",
+            "description": "The cell parent's (URL)",
+            "format": "uri"
+        },
+        "v": {
+            "type": "string",
+            "description": "The cell's value"
+        },
+        "t": {
+            "type": "number",
+            "description": "Epoch timestamp of the cell creation"
+        },
+        "c": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/coordinate"
+            }
+        }
+    },
+    "$defs": {
+        "coordinate": {
+            "type": "object",
+            "required": [
+                "di",
+                "dv"
+            ],
+            "properties": {
+                "di": {
+                    "type": "string",
+                    "description": "Dimension definition identifier (URI)"
+                },
+                "dv": {
+                    "type": "string",
+                    "description": "Coordinate value associated with the coordinate dimension specified in di"
+                }
+            }
+        }
+    }
+}
