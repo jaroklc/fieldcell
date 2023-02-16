@@ -1,7 +1,7 @@
 {
-    "$id": "https://use.fieldcell.org/schema/v0.1/cell.json",
+    "$id": "https://use.fieldcell.org/schema/v0.0.1/cell.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A fieldcell.org matrix cell schema, a basic building element for flat data representations of decision models with any number of dimensions, nesting depth, and complexity. It enables globally reusable fragments of decision data.",
+    "description": "A fieldcell.org matrix cell schema, the basic building element for flat data representations of decision models with any number of dimensions, nesting depth, and complexity. It enables globally reusable fragments of decision data.",
     "type": "object",
     "properties": {
         "i": {
@@ -39,7 +39,8 @@
             "properties": {
                 "di": {
                     "type": "string",
-                    "description": "Dimension definition identifier (URI)"
+                    "description": "Dimension definition identifier (URI)",
+                    "format": "uri"
                 },
                 "dv": {
                     "type": "string",
