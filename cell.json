@@ -1,28 +1,40 @@
 {
-    "$id": "https://use.fieldcell.org/schema/v0.0.1/cell.json",
+    "$id": "https://use.fieldcell.org/schema/v0.0.2/cell.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "A fieldcell.org matrix cell schema, the basic building element for flat data representations of decision models with any number of dimensions, nesting depth, and complexity. It enables globally reusable fragments of decision data.",
     "type": "object",
+    "required": [
+        "cell_id",
+        "parent",
+        "created_at",
+        "created_by",
+        "cell_type"
+    ],
     "properties": {
-        "i": {
+        "cell_id": {
             "type": "string",
-            "description": "The cell's identifier (URL)",
+            "description": "The cell's global identifier (URL)",
             "format": "uri"
         },
-        "o": {
+        "parent": {
             "type": "string",
-            "description": "The cell parent's (URL)",
+            "description": "The cell parent's global identifier (URL)",
             "format": "uri"
         },
-        "v": {
+        "payload": {
             "type": "string",
-            "description": "The cell's value"
+            "description": "The cell's text payload"
         },
-        "t": {
+        "cell_type": {
+            "type": "string",
+            "description": "The cell type definition identifier (URL)",
+            "format": "uri"
+        },
+        "created_at": {
             "type": "number",
             "description": "Epoch timestamp of the cell creation"
         },
-        "c": {
+        "coordinates": {
             "type": "array",
             "items": {
                 "$ref": "#/$defs/coordinate"
@@ -39,7 +51,7 @@
             "properties": {
                 "di": {
                     "type": "string",
-                    "description": "Dimension definition identifier (URI)",
+                    "description": "The dimension definition's global identifier (URI)",
                     "format": "uri"
                 },
                 "dv": {
