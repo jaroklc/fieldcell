@@ -27,12 +27,17 @@
         },
         "cell_type": {
             "type": "string",
-            "description": "The cell type definition identifier (URL)",
+            "description": "The global cell type definition identifier (URL)",
             "format": "uri"
         },
         "created_at": {
             "type": "number",
             "description": "Epoch timestamp of the cell creation"
+        },
+         "created_by": {
+            "type": "text",
+            "description": "The global identifier (URL) of the entity (person/group/company/organization) that created the cell record",
+            "format": "uri"
         },
         "coordinates": {
             "type": "array",
