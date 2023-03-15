@@ -41,6 +41,7 @@
         },
         "coordinates": {
             "type": "array",
+            "uniqueItems": true,
             "items": {
                 "$ref": "#/$defs/coordinate"
             }
