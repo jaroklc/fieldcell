@@ -4,56 +4,41 @@
     "description": "A fieldcell.org matrix cell schema, the basic building element for flat data representations of decision models with any number of dimensions, nesting depth, and complexity. It enables globally reusable fragments of decision data.",
     "type": "object",
     "required": [
-        "cell_id",
-        "coordinates",
-        "payload"
+        "fieldcell_id",
+        "fieldcell_payload",
+        "fieldcell_parent",
+        "fieldcell_type"
     ],
     "properties": {
-        "cell_id": {
+        "fieldcell_id": {
             "type": "string",
-            "description": "The cell's global identifier (URL)",
+            "description": "The cell's global identifier (URL).",
             "format": "uri"
         },
-        "payload": {
+        "fieldcell_type": {
             "type": "string",
-            "description": "The Fieldcell object's text payload"
+            "description": "The cell's type global identifier (URL). See fieldcell.org for standardized cell types.",
+            "format": "uri"
+        },
+        "fieldcell_payload": {
+            "type": "string",
+            "description": "The Fieldcell object's text payload."
+        },
+        "fieldcell_created_at": {
+            "type": "number",
+            "description": "The cell's creation timestamp as the Unix epoch value."
+        },
+        "fieldcell_parent": {
+            "type": "string",
+            "description": "The cell parent's global identtifier (URL). It is the fieldcell_id value of the parent cell.",
+            "format": "uri"
         },
         "coordinates": {
             "type": "array",
             "uniqueItems": true,
-            "minItems": 3,
             "items": {
                 "$ref": "#/$defs/coordinate"
-            },
-            "allOf": [
-                {
-                    "contains": {
-                        "properties": {
-                            "di": {
-                                "const": "https://use.fieldcell.org/parent"
-                            }
-                        }
-                    }
-                },
-                {
-                    "contains": {
-                        "properties": {
-                            "di": {
-                                "const": "https://use.fieldcell.org/created_at"
-                            }
-                        }
-                    }
-                },
-                {
-                    "contains": {
-                        "properties": {
-                            "di": {
-                                "const": "https://use.fieldcell.org/scribe"
-                            }
-                        }
-                    }
-                }
-            ]
+            }
         }
     },
     "$defs": {
