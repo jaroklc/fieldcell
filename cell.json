@@ -21,6 +21,36 @@
             },
             "schema:name": "ID",
             "schema:description": "Globally unique identifier for a FieldCell."
+        },
+        {
+            "@id": "fc:parent",
+            "@type": "schema:Property",
+            "schema:domainIncludes": {
+                "@id": "fc:FieldCell"
+            },
+            "schema:rangeIncludes": {
+                "@id": "fc:FieldCell"
+            },
+            "schema:name": "Parent",
+            "schema:description": "Links the cell to a parent via the parent cell's ID."
+        },
+        {
+            "@id": "fc:coordinates",
+            "@type": "schema:Property",
+            "schema:domainIncludes": {
+                "@id": "fc:FieldCell"
+            },
+            "schema:rangeIncludes": {
+                "@id": "fc:Coordinate"
+            },
+            "schema:name": "Coordinates",
+            "schema:description": "Positions the FieldCell in the global multidimensional data space."
+        },
+        {
+            "@id": "fc:Coordinate",
+            "@type": "schema:Class",
+            "schema:name": "Coordinate",
+            "schema:description": "Represents a coordinate in the multidimensional decision space."
         }
     ]
 }
