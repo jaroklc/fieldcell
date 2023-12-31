@@ -1,6 +1,10 @@
 {
     "@context": {
       "id": "@id",
+      "parentId": {
+        "@id": "https://use.fieldcell.org/1.1/parentId",
+        "@type": "@id"
+      },
       "coordinates": "https://use.fieldcell.org/1.1/coordinates",
       "Coordinate": "https://use.fieldcell.org/1.1/Coordinate",
       "value": {
@@ -10,6 +14,7 @@
       "schema": "http://schema.org/"
     }
   }
+  
   
   
   
