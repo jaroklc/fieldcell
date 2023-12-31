@@ -5,13 +5,11 @@
       "Coordinate": "https://use.fieldcell.org/1.1/Coordinate",
       "value": {
         "@id": "https://use.fieldcell.org/1.1/value",
-        "@type": "@json"
+        "@type": "@id"
       },
-      "valueType": "https://use.fieldcell.org/1.1/valueType",
-      "text": "https://use.fieldcell.org/1.1/text",
-      "numeric": "https://use.fieldcell.org/1.1/numeric",
-      "rating": "https://use.fieldcell.org/1.1/rating"
+      "schema": "http://schema.org/"
     }
   }
+  
   
   
