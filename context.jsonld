@@ -2,6 +2,7 @@
     "@context": {
       "schema": "http://schema.org/",
       "Cell": "https://use.fieldcell.org/Cell",
+      "role": "https://use.fieldcell.org/role",
       "isPartOf": {
         "@id": "schema:isPartOf",
         "@type": "@id"
@@ -19,8 +20,11 @@
       "propertyID": "schema:propertyID",
       "dateCreated": "schema:dateCreated",
       "author": "schema:author",
-      "additionalType": "schema:additionalType"
+      "additionalType": "schema:additionalType",
+      "alternative": "https://use.fieldcell.org/alternative",
+      "criterion": "https://use.fieldcell.org/criterion"
     }
   }
+  
   
   
