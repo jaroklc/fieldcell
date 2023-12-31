@@ -29,7 +29,16 @@
       "cells": {
         "@id": "https://use.fieldcell.org/cells",
         "@container": "@list"
-      }
+      },
+      "validFrom": {
+        "@id": "schema:validFrom",
+        "@type": "schema:DateTime"
+      },
+      "validThrough": {
+        "@id": "schema:validThrough",
+        "@type": "schema:DateTime"
+      },
+      "timeClaimedTrue": "https://use.fieldcell.org/timeClaimedTrue"
     }
   }
   
