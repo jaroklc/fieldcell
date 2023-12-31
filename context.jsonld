@@ -12,12 +12,13 @@
         "@id": "https://use.fieldcell.org/coordinates",
         "@container": "@index"
       },
-      "Coordinate": "https://use.fieldcell.org/Coordinate",
+      "PropertyValue": "https://schema.org/PropertyValue",
       "identifier": "https://schema.org/identifier",
       "coordinateValue": "https://use.fieldcell.org/coordinateValue",
       "schema": "http://schema.org/"
     }
   }
+  
   
   
   
