@@ -2,7 +2,9 @@
     "@context": {
       "schema": "http://schema.org/",
       "Cell": "https://use.fieldcell.org/Cell",
-      "role": "https://use.fieldcell.org/role",
+      "CellGroup": "https://use.fieldcell.org/CellGroup",
+      "id": "@id",
+      "type": "@type",
       "isPartOf": {
         "@id": "schema:isPartOf",
         "@type": "@id"
@@ -22,9 +24,12 @@
       "author": "schema:author",
       "additionalType": "schema:additionalType",
       "alternative": "https://use.fieldcell.org/alternative",
-      "criterion": "https://use.fieldcell.org/criterion"
+      "criterion": "https://use.fieldcell.org/criterion",
+      "role": "https://use.fieldcell.org/role",
+      "cells": {
+        "@id": "https://use.fieldcell.org/cells",
+        "@container": "@list"
+      }
     }
   }
-  
-  
   
