@@ -2,28 +2,29 @@
     "@context": {
       "id": "@id",
       "type": "@type",
-      "Cell": "https://use.fieldcell.org/1.1/Cell",
+      "Cell": "https://use.fieldcell.org/Cell",
       "parentId": {
-        "@id": "https://use.fieldcell.org/1.1/parentId",
+        "@id": "https://use.fieldcell.org/parentId",
         "@type": "@id"
       },
       "value": {
-        "@id": "https://use.fieldcell.org/1.1/value",
+        "@id": "https://use.fieldcell.org/value",
         "@type": "@json"
       },
       "coordinates": {
-        "@id": "https://use.fieldcell.org/1.1/coordinates",
+        "@id": "https://use.fieldcell.org/coordinates",
         "@container": "@index"
       },
-      "Coordinate": "https://use.fieldcell.org/1.1/Coordinate",
+      "Coordinate": "https://use.fieldcell.org/Coordinate",
       "dimension_identifier": {
-        "@id": "https://use.fieldcell.org/1.1/dimension_identifier",
+        "@id": "https://use.fieldcell.org/dimension_identifier",
         "@type": "@id"
       },
-      "coordinateValue": "https://use.fieldcell.org/1.1/coordinateValue",
+      "coordinateValue": "https://use.fieldcell.org/coordinateValue",
       "schema": "http://schema.org/"
     }
   }
+  
   
   
   
