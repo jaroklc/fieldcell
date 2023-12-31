@@ -1,51 +1,25 @@
 {
     "@context": {
-      "id": "@id",
-      "type": "@type",
+      "schema": "http://schema.org/",
       "Cell": "https://use.fieldcell.org/Cell",
       "isPartOf": {
-        "@id": "https://schema.org/isPartOf",
-        "@type": "@id"
-      },
-      "PropertyValue": "https://schema.org/PropertyValue",
-      "propertyID": {
-        "@id": "https://schema.org/propertyID",
+        "@id": "schema:isPartOf",
         "@type": "@id"
       },
       "value": {
-        "@id": "https://schema.org/value",
-        "@type": "@id"
+        "@id": "schema:PropertyValue",
+        "@type": "@json"
       },
+      "citation": "schema:citation",
       "coordinates": {
         "@id": "https://use.fieldcell.org/coordinates",
         "@container": "@index"
       },
-      "schema": "http://schema.org/"
-    },
-    "@type": "Cell",
-    "id": "https://cell.trxtl.com/8ejj3d9rhf8f0f",
-    "isPartOf": "https://cell.trxtl.com/4387f7ycdh8",
-    "value": {
-      "@type": "PropertyValue",
-      "propertyID": "description", // Using a standard Schema.org property
-      "value": "Professional-Grade, Container, Self-Cleaning 64 oz, Black/Grey"
-    },
-    "coordinates": {
-      "dateCreated": {
-        "@type": "PropertyValue",
-        "propertyID": "dateCreated",
-        "value": "12/24/2023"
-      },
-      "author": {
-        "@type": "PropertyValue",
-        "propertyID": "author",
-        "value": "https://www.linkedin.com/in/jaroklc/"
-      },
-      "cellType": {
-        "@type": "PropertyValue",
-        "propertyID": "additionalType", // Using additionalType for custom types
-        "value": "Cell Type Description"
-      }
+      "PropertyValue": "schema:PropertyValue",
+      "propertyID": "schema:propertyID",
+      "dateCreated": "schema:dateCreated",
+      "author": "schema:author",
+      "additionalType": "schema:additionalType"
     }
   }
   
