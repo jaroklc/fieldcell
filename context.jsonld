@@ -7,10 +7,7 @@
         "@id": "https://schema.org/isPartOf",
         "@type": "@id"
       },
-      "value": {
-        "@id": "https://use.fieldcell.org/value",
-        "@type": "@json"
-      },
+      "value": "https://schema.org/PropertyValue",
       "coordinates": {
         "@id": "https://use.fieldcell.org/coordinates",
         "@container": "@index"
@@ -21,6 +18,7 @@
       "schema": "http://schema.org/"
     }
   }
+  
   
   
   
