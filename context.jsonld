@@ -1,0 +1,15 @@
+{
+    "@context": {
+      "id": "@id",
+      "value": "https://use.fieldcell.org/1.1/value",
+      "coordinates": "https://use.fieldcell.org/1.1/coordinates",
+      "Coordinate": "https://use.fieldcell.org/1.1/Coordinate",
+      "thing": {
+        "@id": "https://use.fieldcell.org/1.1/thing",
+        "@type": "@id"
+      },
+      "coordinateValue": "https://use.fieldcell.org/1.1/coordinateValue",
+      "schema": "http://schema.org/"
+    }
+  }
+  
