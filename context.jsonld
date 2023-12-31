@@ -3,8 +3,8 @@
       "id": "@id",
       "type": "@type",
       "Cell": "https://use.fieldcell.org/Cell",
-      "parentId": {
-        "@id": "https://use.fieldcell.org/parentId",
+      "isPartOf": {
+        "@id": "https://schema.org/isPartOf",
         "@type": "@id"
       },
       "value": {
@@ -24,6 +24,7 @@
       "schema": "http://schema.org/"
     }
   }
+  
   
   
   
