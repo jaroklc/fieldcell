@@ -1,0 +1,45 @@
+{
+    "@context": {
+      "schema": "http://schema.org/",
+      "Cell": "https://use.fieldcell.org/Cell",
+      "CellGroup": "https://use.fieldcell.org/CellGroup",
+      "id": "@id",
+      "type": "@type",
+      "isPartOf": {
+        "@id": "schema:isPartOf",
+        "@type": "@id"
+      },
+      "value": {
+        "@id": "schema:PropertyValue",
+        "@type": "@json"
+      },
+      "citation": "schema:citation",
+      "coordinates": {
+        "@id": "https://use.fieldcell.org/coordinates",
+        "@container": "@index"
+      },
+      "PropertyValue": "schema:PropertyValue",
+      "propertyID": "schema:propertyID",
+      "dateCreated": "schema:dateCreated",
+      "author": "schema:author",
+      "additionalType": "schema:additionalType",
+      "alternative": "https://use.fieldcell.org/alternative",
+      "criterion": "https://use.fieldcell.org/criterion",
+      "role": "https://use.fieldcell.org/role",
+      "cells": {
+        "@id": "https://use.fieldcell.org/cells",
+        "@container": "@list"
+      },
+      "validFrom": {
+        "@id": "schema:validFrom",
+        "@type": "schema:DateTime"
+      },
+      "validThrough": {
+        "@id": "schema:validThrough",
+        "@type": "schema:DateTime"
+      },
+      "timeClaimedTrue": "https://use.fieldcell.org/timeClaimedTrue"
+    }
+  }
+  
+  
