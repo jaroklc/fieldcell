@@ -16,14 +16,12 @@
         "@container": "@index"
       },
       "Coordinate": "https://use.fieldcell.org/Coordinate",
-      "dimension_identifier": {
-        "@id": "https://use.fieldcell.org/dimension_identifier",
-        "@type": "@id"
-      },
+      "identifier": "https://schema.org/identifier",
       "coordinateValue": "https://use.fieldcell.org/coordinateValue",
       "schema": "http://schema.org/"
     }
   }
+  
   
   
   
