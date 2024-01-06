@@ -29,6 +29,7 @@
     "weight": "fc:weight",
     "matrixCell": "fc:matrixCell",
     "role": "fc:role",
+    "externalReference": "fc:externalReference",
     "cells": {
       "@id": "fc:cells",
       "@container": "@list"
@@ -41,6 +42,15 @@
       "@id": "schema:validThrough",
       "@type": "schema:DateTime"
     },
-    "timeClaimedTrue": "fc:timeClaimedTrue"
+    "timeClaimedTrue": "fc:timeClaimedTrue",
+    "label": "schema:name",
+    "description": "schema:description",
+    "comment": "schema:comment",
+    "AgreeAction": "schema:AgreeAction",
+    "DisagreeAction": "schema:DisagreeAction",
+    "DislikeAction": "schema:DislikeAction",
+    "EndorseAction": "schema:EndorseAction",
+    "LikeAction": "schema:LikeAction",
+    "WantAction": "schema:WantAction"
   }
 }
