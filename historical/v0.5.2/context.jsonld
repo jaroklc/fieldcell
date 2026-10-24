@@ -1,0 +1,56 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "fc": "https://use.fieldcell.org/",
+    "Cell": "fc:Cell",
+    "CellGroup": "fc:CellGroup",
+    "id": "@id",
+    "type": "@type",
+    "isPartOf": {
+      "@id": "schema:isPartOf",
+      "@type": "@id"
+    },
+    "value": {
+      "@id": "schema:PropertyValue",
+      "@type": "@json"
+    },
+    "citation": "schema:citation",
+    "coordinates": {
+      "@id": "fc:coordinates",
+      "@container": "@index"
+    },
+    "PropertyValue": "schema:PropertyValue",
+    "propertyID": "schema:propertyID",
+    "dateCreated": "schema:dateCreated",
+    "author": "schema:author",
+    "additionalType": "schema:additionalType",
+    "alternative": "fc:alternative",
+    "criterion": "fc:criterion",
+    "weight": "fc:weight",
+    "matrixCell": "fc:matrixCell",
+    "role": "fc:role",
+    "externalReference": "fc:externalReference",
+    "cells": {
+      "@id": "fc:cells",
+      "@container": "@list"
+    },
+    "validFrom": {
+      "@id": "schema:validFrom",
+      "@type": "schema:DateTime"
+    },
+    "validThrough": {
+      "@id": "schema:validThrough",
+      "@type": "schema:DateTime"
+    },
+    "timeClaimedTrue": "fc:timeClaimedTrue",
+    "label": "schema:name",
+    "description": "schema:description",
+    "comment": "schema:comment",
+    "AgreeAction": "schema:AgreeAction",
+    "DisagreeAction": "schema:DisagreeAction",
+    "DislikeAction": "schema:DislikeAction",
+    "EndorseAction": "schema:EndorseAction",
+    "LikeAction": "schema:LikeAction",
+    "WantAction": "schema:WantAction"
+  }
+}

@@ -1,5 +1,6 @@
 {
   "@context": {
+    "@version": 1.1,
     "schema": "http://schema.org/",
     "fc": "https://use.fieldcell.org/",
     "Cell": "fc:Cell",
@@ -10,17 +11,22 @@
       "@id": "schema:isPartOf",
       "@type": "@id"
     },
-    "value": {
-      "@id": "schema:PropertyValue",
-      "@type": "@json"
-    },
-    "citation": "schema:citation",
     "coordinates": {
       "@id": "fc:coordinates",
-      "@container": "@index"
+      "@type": "@json"
     },
+    "value": {
+      "@id": "fc:value",
+      "@type": "@json"
+    },
+    "seriesAxis": "fc:seriesAxis",
     "PropertyValue": "schema:PropertyValue",
     "propertyID": "schema:propertyID",
+    "unitText": "schema:unitText",
+    "unitCode": "schema:unitCode",
+    "minValue": "schema:minValue",
+    "maxValue": "schema:maxValue",
+    "citation": "schema:citation",
     "dateCreated": "schema:dateCreated",
     "author": "schema:author",
     "additionalType": "schema:additionalType",
@@ -46,6 +52,7 @@
     "label": "schema:name",
     "description": "schema:description",
     "comment": "schema:comment",
+    "image": "schema:image",
     "AgreeAction": "schema:AgreeAction",
     "DisagreeAction": "schema:DisagreeAction",
     "DislikeAction": "schema:DislikeAction",

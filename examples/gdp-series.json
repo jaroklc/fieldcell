@@ -1,0 +1,15 @@
+{
+  "@context": "https://use.fieldcell.org/context.jsonld",
+  "id": "https://example.org/cells/usa-gdp-illustration",
+  "type": "Cell",
+  "author": { "id": "https://example.org/orgs/imf" },
+  "dateCreated": "2024-10-01T00:00:00Z",
+  "citation": "https://www.imf.org/en/Publications/WEO",
+  "coordinates": {
+    "country": { "@id": "https://example.org/countries/USA" },
+    "indicator": { "@id": "https://example.org/indicators/gross-domestic-product" },
+    "timeClaimedTrue": ["2019", "2020", "2021"]
+  },
+  "seriesAxis": "timeClaimedTrue",
+  "value": [21439400, 21354100, 23594000]
+}

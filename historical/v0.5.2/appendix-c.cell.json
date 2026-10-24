@@ -1,0 +1,21 @@
+{
+  "@context": "https://use.fieldcell.org/context.jsonld",
+  "fc:id": "https://cells.trxtl.com/CP6JVEh2ewTnt34t4UwIZx2O7ok1/08381b41-ee5b-4e24-9380-50cb8a7e95bf",
+  "fc:coordinates": {
+    "fc:isPartOf": "https://cells.trxtl.com/CP6JVEh2ewTnt34t4UwIZx2O7ok1/3797d9e7-de8a-4229-b9ed-11c6f7d0b3bf",
+    "fc:dateCreated": "2024-02-22T04:18:12.616Z",
+    "fc:criterion": "https://cells.trxtl.com/CP6JVEh2ewTnt34t4UwIZx2O7ok1/24eea4ce-0b8e-4fac-9de2-a7eb735c1b3b",
+    "fc:CellGroup": "https://cells.trxtl.com/CP6JVEh2ewTnt34t4UwIZx2O7ok1/3797d9e7-de8a-4229-b9ed-11c6f7d0b3bf",
+    "fc:author": "https://cells.trxtl.com/CP6JVEh2ewTnt34t4UwIZx2O7ok1",
+    "fc:role": "fc:matrixCell",
+    "fc:alternative": "https://cells.trxtl.com/CP6JVEh2ewTnt34t4UwIZx2O7ok1/de0d661f-8a02-47aa-b34a-f8c58018a6f3"
+  },
+  "fc:value": {
+    "fc:propertyID": "https://schema.org/Rating",
+    "minValue": 0,
+    "@type": "PropertyValue",
+    "maxValue": 10,
+    "description": "Rating value on a scale of 0 to 10",
+    "value": "1"
+  }
+}

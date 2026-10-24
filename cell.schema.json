@@ -1,65 +1,297 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://use.fieldcell.org/cell.schema.json",
-    "title": "Fieldcell Object",
-    "description": "This schema is for Fieldcell objects. All 'fc:' prefixed properties refer to terms defined in the Fieldcell context located at https://use.fieldcell.org/context.jsonld",
-    "type": "object",
-    "required": ["fc:id", "fc:coordinates", "fc:value"],
-    "properties": {
-      "@context": {
-        "type": "string",
-        "const": "https://use.fieldcell.org/context.jsonld",
-        "description": "The URL of the Fieldcell context defining the 'fc:' namespace"
-      },
-      "fc:id": {
-        "type": "string",
-        "format": "uri",
-        "description": "The unique identifier of the Fieldcell object"
-      },
-      "fc:coordinates": {
-        "type": "object",
-        "description": "Coordinates map, where each key is a URI (defined in Fieldcell context) representing a dimension",
-        "additionalProperties": {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://use.fieldcell.org/v0.6/cell.schema.json",
+  "title": "FieldCell document (0.6)",
+  "description": "Authoring form for a FieldCell cell or cell group. Validate this shape after JSON-LD compaction with https://use.fieldcell.org/context.jsonld. Dimension keys live in coordinates. A series packs many observations that share every coordinate except one: that coordinate's value is an ordered array, and the cell value is an ordered array of the same length. See SCHEMA.md for alignment rules, nexting, and the 0.5.2 migration.",
+  "$defs": {
+    "context": {
+      "description": "The FieldCell context. An array may include extension contexts; one entry must be the FieldCell context URL.",
+      "oneOf": [
+        {
+          "const": "https://use.fieldcell.org/context.jsonld"
+        },
+        {
+          "type": "array",
+          "minItems": 1,
+          "contains": {
+            "const": "https://use.fieldcell.org/context.jsonld"
+          }
+        }
+      ]
+    },
+    "literal": {
+      "anyOf": [
+        { "type": "string" },
+        { "type": "number" },
+        { "type": "boolean" }
+      ]
+    },
+    "valueLiteral": {
+      "description": "A measurement token. Null keeps a series position and does not mean zero. Strings are not coerced to numbers.",
+      "anyOf": [
+        { "type": "string" },
+        { "type": "number" },
+        { "type": "boolean" },
+        { "type": "null" }
+      ]
+    },
+    "nodeRef": {
+      "description": "A reference to another cell or entity. Inside coordinates use @id. Top-level JSON-LD compaction aliases @id to id.",
+      "oneOf": [
+        {
           "type": "object",
-          "required": ["fc:isPartOf", "fc:author", "fc:dateCreated"],
+          "additionalProperties": false,
           "properties": {
-            "fc:isPartOf": {
+            "@id": {
               "type": "string",
-              "format": "uri",
-              "description": "URI indicating a larger structure or collection this cell is part of"
-            },
-            "fc:author": {
+              "format": "uri"
+            }
+          },
+          "required": ["@id"]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
               "type": "string",
-              "description": "The author or creator of the cell's content"
-            },
-            "fc:dateCreated": {
-              "type": "string",
-              "format": "date-time",
-              "description": "The date and time when the cell was created"
+              "format": "uri"
+            }
+          },
+          "required": ["id"]
+        }
+      ]
+    },
+    "coordinateValue": {
+      "description": "A scalar position, a reference to another cell, or the ordered keys of the single series axis.",
+      "oneOf": [
+        { "$ref": "#/$defs/literal" },
+        { "$ref": "#/$defs/nodeRef" },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              { "$ref": "#/$defs/literal" },
+              { "$ref": "#/$defs/nodeRef" }
+            ]
+          }
+        }
+      ]
+    },
+    "propertyValue": {
+      "type": "object",
+      "required": ["@type", "value"],
+      "properties": {
+        "@type": {
+          "const": "PropertyValue",
+          "description": "Token for schema:PropertyValue. Inside the JSON value blob this string is not expanded by the context."
+        },
+        "value": {
+          "oneOf": [
+            { "$ref": "#/$defs/valueLiteral" },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/valueLiteral" }
+            }
+          ]
+        },
+        "propertyID": {
+          "type": "string",
+          "description": "Identifier of the measured property. Absolute IRIs are recommended."
+        },
+        "unitText": { "type": "string" },
+        "unitCode": { "type": "string" },
+        "minValue": { "type": "number" },
+        "maxValue": { "type": "number" },
+        "description": { "type": "string" }
+      },
+      "description": "Qualified payload. When value is an array, unit and scale apply to every position. A change of unit is a different cell. Unknown fields are retained."
+    },
+    "measurement": {
+      "description": "Scalar payload, series payload, or qualified PropertyValue. Identity cells omit this property.",
+      "oneOf": [
+        { "$ref": "#/$defs/valueLiteral" },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/valueLiteral" }
+        },
+        { "$ref": "#/$defs/propertyValue" }
+      ]
+    },
+    "arrayMeasurement": {
+      "description": "Measurement whose positions line up with the series axis.",
+      "oneOf": [
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/valueLiteral" }
+        },
+        {
+          "type": "object",
+          "required": ["value"],
+          "properties": {
+            "value": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/valueLiteral" }
             }
           }
         }
-      },
-      "fc:value": {
-        "type": "object",
-        "required": ["@type", "value"],
-        "properties": {
-          "@type": {
-            "type": "string",
-            "const": "PropertyValue",
-            "description": "Indicates that the type of the value is a PropertyValue"
-          },
-          "value": {
-            "type": "string",
-            "description": "The actual value of the object"
-          },
-          "fc:propertyID": {
-            "type": "string",
-            "format": "uri",
-            "description": "A URI that uniquely identifies the property"
-          }
+      ]
+    },
+    "cell": {
+      "type": "object",
+      "required": ["id", "coordinates"],
+      "properties": {
+        "@context": { "$ref": "#/$defs/context" },
+        "id": {
+          "type": "string",
+          "format": "uri",
+          "description": "Global identifier of this cell. A label, array index, or local key does not identify the cell."
         },
-        "description": "The value of the Fieldcell object, following the PropertyValue structure as defined in the Fieldcell context"
+        "type": {
+          "description": "JSON-LD type. Cell and CellGroup are the common values. Other types are allowed.",
+          "oneOf": [
+            { "type": "string", "minLength": 1 },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 }
+            }
+          ]
+        },
+        "coordinates": {
+          "type": "object",
+          "description": "Open map of dimension name to position. Keys should be FieldCell context terms (timeClaimedTrue, criterion, alternative, role) or absolute IRIs. At most one value may be an array; that dimension is the series axis. Author, creation time, and membership are cell fields, not required members of each coordinate.",
+          "additionalProperties": { "$ref": "#/$defs/coordinateValue" }
+        },
+        "seriesAxis": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Coordinates key whose array value is the packed dimension. Optional when exactly one coordinate is an array. The key is matched literally, not as an expanded IRI."
+        },
+        "value": { "$ref": "#/$defs/measurement" },
+        "author": {
+          "description": "Attribution for this fragment. A name, an IRI, or a node reference. Distinct from a decision dimension unless a publisher also places author in coordinates.",
+          "oneOf": [
+            { "type": "string", "minLength": 1 },
+            { "$ref": "#/$defs/nodeRef" },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "oneOf": [
+                  { "type": "string", "minLength": 1 },
+                  { "$ref": "#/$defs/nodeRef" }
+                ]
+              }
+            }
+          ]
+        },
+        "dateCreated": {
+          "type": "string",
+          "description": "When this cell artifact was created. ISO 8601 date-time is recommended. This is not the time the claim is about."
+        },
+        "validFrom": {
+          "type": "string",
+          "description": "When this record is in effect."
+        },
+        "validThrough": {
+          "type": "string",
+          "description": "When this record stops being in effect."
+        },
+        "isPartOf": {
+          "description": "Attachment or membership. Targets may be a group, a parent criterion, or another cell. An array records more than one parent. The target's role distinguishes group membership from criterion nesting.",
+          "oneOf": [
+            { "type": "string", "format": "uri" },
+            { "$ref": "#/$defs/nodeRef" },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "oneOf": [
+                  { "type": "string", "format": "uri" },
+                  { "$ref": "#/$defs/nodeRef" }
+                ]
+              }
+            }
+          ]
+        },
+        "citation": {
+          "type": "string",
+          "description": "Source of the fragment."
+        },
+        "externalReference": {
+          "type": "string",
+          "description": "External resource associated with this cell."
+        },
+        "label": {
+          "type": "string",
+          "description": "Human-readable name. Renaming a label does not mint a new id."
+        },
+        "description": { "type": "string" },
+        "comment": { "type": "string" },
+        "image": { "type": "string" },
+        "additionalType": { "type": "string" },
+        "cells": {
+          "type": "array",
+          "description": "Ordered publication of member cells or references to them. Embed a cell to publish it inline. Use a node reference after flattening. Membership is also stated by each member's isPartOf. List order is not a ranking.",
+          "items": {
+            "oneOf": [
+              { "$ref": "#/$defs/cell" },
+              { "$ref": "#/$defs/nodeRef" }
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "type": "object",
+            "properties": {
+              "seriesAxis": { "type": "string", "minLength": 1 }
+            },
+            "required": ["seriesAxis"]
+          },
+          "then": {
+            "type": "object",
+            "properties": {
+              "value": { "$ref": "#/$defs/arrayMeasurement" }
+            },
+            "required": ["value"]
+          }
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "description": "A single cell or a nested cell group.",
+      "allOf": [
+        { "$ref": "#/$defs/cell" },
+        {
+          "type": "object",
+          "properties": {
+            "@context": { "$ref": "#/$defs/context" }
+          },
+          "required": ["@context"]
+        }
+      ]
+    },
+    {
+      "description": "Flattened JSON-LD graph produced by an RDF round trip. Member bodies are graph nodes; list entries may be references.",
+      "type": "object",
+      "required": ["@context", "@graph"],
+      "properties": {
+        "@context": { "$ref": "#/$defs/context" },
+        "@graph": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/cell" }
+        }
       }
     }
-  }
+  ]
+}

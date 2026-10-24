@@ -1,0 +1,65 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://use.fieldcell.org/cell.schema.json",
+    "title": "Fieldcell Object",
+    "description": "This schema is for Fieldcell objects. All 'fc:' prefixed properties refer to terms defined in the Fieldcell context located at https://use.fieldcell.org/context.jsonld",
+    "type": "object",
+    "required": ["fc:id", "fc:coordinates", "fc:value"],
+    "properties": {
+      "@context": {
+        "type": "string",
+        "const": "https://use.fieldcell.org/context.jsonld",
+        "description": "The URL of the Fieldcell context defining the 'fc:' namespace"
+      },
+      "fc:id": {
+        "type": "string",
+        "format": "uri",
+        "description": "The unique identifier of the Fieldcell object"
+      },
+      "fc:coordinates": {
+        "type": "object",
+        "description": "Coordinates map, where each key is a URI (defined in Fieldcell context) representing a dimension",
+        "additionalProperties": {
+          "type": "object",
+          "required": ["fc:isPartOf", "fc:author", "fc:dateCreated"],
+          "properties": {
+            "fc:isPartOf": {
+              "type": "string",
+              "format": "uri",
+              "description": "URI indicating a larger structure or collection this cell is part of"
+            },
+            "fc:author": {
+              "type": "string",
+              "description": "The author or creator of the cell's content"
+            },
+            "fc:dateCreated": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date and time when the cell was created"
+            }
+          }
+        }
+      },
+      "fc:value": {
+        "type": "object",
+        "required": ["@type", "value"],
+        "properties": {
+          "@type": {
+            "type": "string",
+            "const": "PropertyValue",
+            "description": "Indicates that the type of the value is a PropertyValue"
+          },
+          "value": {
+            "type": "string",
+            "description": "The actual value of the object"
+          },
+          "fc:propertyID": {
+            "type": "string",
+            "format": "uri",
+            "description": "A URI that uniquely identifies the property"
+          }
+        },
+        "description": "The value of the Fieldcell object, following the PropertyValue structure as defined in the Fieldcell context"
+      }
+    }
+  }

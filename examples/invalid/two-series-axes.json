@@ -1,0 +1,10 @@
+{
+  "@context": "https://use.fieldcell.org/context.jsonld",
+  "id": "https://example.org/cells/invalid-two-axes",
+  "type": "Cell",
+  "coordinates": {
+    "country": ["USA", "FRA"],
+    "timeClaimedTrue": ["2019", "2020"]
+  },
+  "value": [1, 2]
+}

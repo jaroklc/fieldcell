@@ -1,0 +1,11 @@
+{
+  "@context": "https://use.fieldcell.org/context.jsonld",
+  "id": "https://example.org/cells/invalid-scalar-series",
+  "type": "Cell",
+  "coordinates": {
+    "country": { "@id": "https://example.org/countries/USA" },
+    "timeClaimedTrue": ["2019", "2020"]
+  },
+  "seriesAxis": "timeClaimedTrue",
+  "value": 1
+}
