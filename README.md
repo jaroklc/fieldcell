@@ -7,15 +7,20 @@ Welcome to the FieldCell Context Repository. This repository contains the JSON-L
 The FieldCell model is part of an initiative to enable global publication and reusability of decision fragments, leveraging the power of linked data and semantic web technologies. It is designed to cater to a wide range of applications, from simple decision matrices to complex decision-making structures.
 
 ## Contents
-- `context.jsonld`: The JSON-LD context file that defines the structure and properties of the FieldCell model.
-- (TO DO) documentation and usage examples will be added to this repository as well as the home site of the project - https://use.fieldcell.org
+- `context.jsonld`: Proposed FieldCell 0.6 JSON-LD context.
+- `cell.schema.json`: Proposed FieldCell 0.6 JSON Schema for a cell or cell group.
+- `SCHEMA.md`: Authoring contract, series alignment, nexting, and the migration from 0.5.2.
+- `examples/`: A GDP series, a two-country panel, a decision group, and invalid series documents.
+- `historical/v0.5.2/`: The previous schema and context, and a transcription of the dissertation’s Appendix C cell.
+- (TO DO) the project site https://use.fieldcell.org will publish the versioned context and schema.
 
 ## Key Features
-- **Temporal Properties**: `validFrom`, `validThrough`, and `timeClaimedTrue` for specifying the validity and relevance period of information.
-- **Relational Properties**: `isPartOf` for establishing hierarchical relationships and `citation` for referencing information sources.
-- **Coordinates**: Used to define a collection of properties or attributes of a cell. Each coordinate can represent dimensions like time, location, or specific characteristics relevant to the cell's context.
-- **Value Field**: A versatile property that can hold various types of data, such as textual descriptions, numeric values, or complex objects, providing flexibility in representing the content of a cell.
-- **Weight Entity**: Customizable entity used to assign weights to criteria or participants in decision-making processes, allowing for nuanced representation of influence or priority.
+- **Temporal Properties**: `dateCreated` for when a cell was written, `validFrom` and `validThrough` for when the record is in effect, and `timeClaimedTrue` as a coordinate for the time a statement is about.
+- **Relational Properties**: `isPartOf` for membership and nesting, including more than one parent, and `citation` for sources.
+- **Coordinates**: An open map of dimensions. A value is a literal, a reference to another cell, or an array on a single series axis.
+- **Series**: When every coordinate is shared except one, that coordinate holds an ordered array and the cell value holds the matching array. See the GDP example in `examples/gdp-series.json`.
+- **Value Field**: Optional, so identity cells can omit it. A present value is a literal, an array of literals, or a `PropertyValue` with unit and scale. `null` in a series is a missing observation.
+- **Weight Entity**: A cell whose role is `weight`, attached to a criterion, rather than a single number baked into the criterion.
 
 ## Contributing
 Contributions to the FieldCell Context Repository are welcome! 

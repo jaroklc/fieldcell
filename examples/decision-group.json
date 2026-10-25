@@ -1,0 +1,88 @@
+{
+  "@context": "https://use.fieldcell.org/context.jsonld",
+  "id": "https://example.org/groups/hiring",
+  "type": "CellGroup",
+  "label": "Hiring decision",
+  "coordinates": { "role": "group" },
+  "cells": [
+    {
+      "id": "https://example.org/cells/criterion-interpersonal",
+      "type": "Cell",
+      "label": "Interpersonal",
+      "isPartOf": "https://example.org/groups/hiring",
+      "coordinates": { "role": "criterion" }
+    },
+    {
+      "id": "https://example.org/cells/criterion-communication",
+      "type": "Cell",
+      "label": "Communication",
+      "isPartOf": [
+        "https://example.org/groups/hiring",
+        "https://example.org/cells/criterion-interpersonal"
+      ],
+      "coordinates": { "role": "criterion" }
+    },
+    {
+      "id": "https://example.org/cells/alternative-avery",
+      "type": "Cell",
+      "label": "Avery",
+      "isPartOf": "https://example.org/groups/hiring",
+      "coordinates": { "role": "alternative" }
+    },
+    {
+      "id": "https://example.org/cells/weight-communication-mina",
+      "type": "Cell",
+      "author": { "id": "https://example.org/people/mina" },
+      "isPartOf": "https://example.org/groups/hiring",
+      "coordinates": {
+        "role": "weight",
+        "criterion": { "@id": "https://example.org/cells/criterion-communication" }
+      },
+      "value": {
+        "@type": "PropertyValue",
+        "minValue": 0,
+        "maxValue": 1,
+        "value": 0.4
+      }
+    },
+    {
+      "id": "https://example.org/cells/score-mina",
+      "type": "Cell",
+      "author": { "id": "https://example.org/people/mina" },
+      "dateCreated": "2024-02-22T04:18:12.616Z",
+      "isPartOf": "https://example.org/groups/hiring",
+      "coordinates": {
+        "role": "matrixCell",
+        "criterion": { "@id": "https://example.org/cells/criterion-communication" },
+        "alternative": { "@id": "https://example.org/cells/alternative-avery" }
+      },
+      "value": {
+        "@type": "PropertyValue",
+        "propertyID": "http://schema.org/Rating",
+        "minValue": 0,
+        "maxValue": 10,
+        "description": "Rating on a scale of 0 to 10",
+        "value": 7
+      }
+    },
+    {
+      "id": "https://example.org/cells/score-jun",
+      "type": "Cell",
+      "author": { "id": "https://example.org/people/jun" },
+      "dateCreated": "2024-02-22T05:01:00.000Z",
+      "isPartOf": "https://example.org/groups/hiring",
+      "coordinates": {
+        "role": "matrixCell",
+        "criterion": { "@id": "https://example.org/cells/criterion-communication" },
+        "alternative": { "@id": "https://example.org/cells/alternative-avery" }
+      },
+      "value": {
+        "@type": "PropertyValue",
+        "propertyID": "http://schema.org/Rating",
+        "minValue": 0,
+        "maxValue": 10,
+        "value": "5"
+      }
+    }
+  ]
+}

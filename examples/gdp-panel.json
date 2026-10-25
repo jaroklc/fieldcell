@@ -1,0 +1,73 @@
+{
+  "@context": "https://use.fieldcell.org/context.jsonld",
+  "id": "https://example.org/groups/gdp-illustration",
+  "type": "CellGroup",
+  "label": "Illustrative GDP panel",
+  "description": "Each series holds years on timeClaimedTrue and GDP figures in value. Country and indicator stay scalar, so another series can step across country. Figures are not an IMF data extract. Null is a missing observation.",
+  "coordinates": { "role": "group" },
+  "cells": [
+    {
+      "id": "https://example.org/countries/USA",
+      "type": "Cell",
+      "label": "United States",
+      "isPartOf": "https://example.org/groups/gdp-illustration",
+      "coordinates": { "role": "entity" }
+    },
+    {
+      "id": "https://example.org/countries/FRA",
+      "type": "Cell",
+      "label": "France",
+      "isPartOf": "https://example.org/groups/gdp-illustration",
+      "coordinates": { "role": "entity" }
+    },
+    {
+      "id": "https://example.org/indicators/gross-domestic-product",
+      "type": "Cell",
+      "label": "Gross domestic product",
+      "isPartOf": "https://example.org/groups/gdp-illustration",
+      "coordinates": { "role": "criterion" }
+    },
+    {
+      "id": "https://example.org/cells/usa-gdp",
+      "type": "Cell",
+      "author": { "id": "https://example.org/orgs/imf" },
+      "dateCreated": "2024-10-01T00:00:00Z",
+      "citation": "https://www.imf.org/en/Publications/WEO",
+      "isPartOf": "https://example.org/groups/gdp-illustration",
+      "coordinates": {
+        "country": { "@id": "https://example.org/countries/USA" },
+        "indicator": { "@id": "https://example.org/indicators/gross-domestic-product" },
+        "timeClaimedTrue": ["2019", "2020", "2021"]
+      },
+      "seriesAxis": "timeClaimedTrue",
+      "value": {
+        "@type": "PropertyValue",
+        "unitText": "current USD",
+        "propertyID": "https://example.org/indicators/gross-domestic-product",
+        "description": "Illustrative figures paired by index with timeClaimedTrue.",
+        "value": [21439400, 21354100, 23594000]
+      }
+    },
+    {
+      "id": "https://example.org/cells/fra-gdp",
+      "type": "Cell",
+      "author": { "id": "https://example.org/orgs/imf" },
+      "dateCreated": "2024-10-01T00:00:00Z",
+      "citation": "https://www.imf.org/en/Publications/WEO",
+      "isPartOf": "https://example.org/groups/gdp-illustration",
+      "coordinates": {
+        "country": { "@id": "https://example.org/countries/FRA" },
+        "indicator": { "@id": "https://example.org/indicators/gross-domestic-product" },
+        "timeClaimedTrue": ["2019", "2020", "2021"]
+      },
+      "seriesAxis": "timeClaimedTrue",
+      "value": {
+        "@type": "PropertyValue",
+        "unitText": "current USD",
+        "propertyID": "https://example.org/indicators/gross-domestic-product",
+        "description": "Illustrative figures. The null keeps 2020 aligned and is not zero.",
+        "value": [2728850, null, 3012300]
+      }
+    }
+  ]
+}
